@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fbfa543b063e2e498024db46c87823d, type: 3}
+  m_Name: Inimigo1Data
+  m_EditorClassIdentifier: Assembly-CSharp::InimigoData
+  velInimigoWalk: 6
+  velInimigoRun: 12
+  anguloVisao: 120
+  raioVisao: 8
+  velRotacaoVisao: 360
+  distanciaMinPlayer: 7
+  distanciaMinPatrolPoint: 0.5
+  tempoReacaoSurpreso: 1
+  tempoParaChase: 10
+  tempoDesisteSearch: 20
+  rangeSomAlerta: 30
