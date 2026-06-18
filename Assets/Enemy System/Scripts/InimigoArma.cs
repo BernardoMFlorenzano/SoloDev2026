@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class InimigoArma : MonoBehaviour
@@ -6,6 +7,9 @@ public class InimigoArma : MonoBehaviour
     public Vector3 rotPadraoRepouso;
     public Vector3 posPadraoMirando;
     public Vector3 rotPadraoMirando;
+
+    public List<Transform> maosPos;   // Locais que targets das mãos vão
+    
 
     float modo = 0; // Repouso 
 
