@@ -14,6 +14,11 @@ public class PlayerData : ScriptableObject
     public float velMovRun = 1.5f;
     public float velMovSneak = 0.5f;
 
+    [Header("Sons")]
+    public float rangeSomWalk = 5f;
+    public float rangeSomSneak = 1f;
+    public float rangeSomRun = 10f;
+
     [Header("Lunge")]
     public float velMovLunge;
     public float impulsoLunge = 30f;

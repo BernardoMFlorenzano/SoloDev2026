@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 public class MovimentoPlayer : MonoBehaviour
 {
-    [SerializeField] PlayerData playerData;
+    public PlayerData playerData;
     Rigidbody2D rb;
     Vector2 direcao;
     DirecaoCorpo direcaoCorpo;
@@ -27,6 +27,16 @@ public class MovimentoPlayer : MonoBehaviour
     [SerializeField] float weightReduzidoPadrao = 0f;
     Animator animator;
     PernasHandler pernasHandler;
+
+    public bool GetCorrendo()
+    {
+        return correndo;
+    }
+
+    public bool GetSneaking()
+    {
+        return sneaking;
+    }
 
     private void OnEnable()
     {

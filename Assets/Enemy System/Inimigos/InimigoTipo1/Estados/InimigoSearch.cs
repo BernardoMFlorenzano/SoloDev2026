@@ -113,7 +113,7 @@ public class InimigoSearch : EstadoBase<InimigoTipo1>
         {
             if (ctx.SomAtual != null)
             {
-                if (ctx.SomAtual.tipoSom == Som.TipoSom.Desconhecido || ctx.SomAtual.tipoSom == Som.TipoSom.Perigo)
+                if (ctx.SomAtual.tipoSom == Som.TipoSom.Perigo)
                 {
                     ctx.TrocaEstado(ctx.EstadoSurprise);
                     return;

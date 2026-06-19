@@ -91,4 +91,6 @@ public class PlayerInteracao : MonoBehaviour
             interagiveisEmRange.Remove(interagivel);
         }
     }
+
+    
 }

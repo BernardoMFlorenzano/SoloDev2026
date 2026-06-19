@@ -3,6 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "InimigoData", menuName = "Scriptable Objects/InimigoData")]
 public class InimigoData : ScriptableObject
 {
+    public float vidaMax = 1f;
     [Header("Velocidade")]
     public float velInimigoWalk;
     public float velInimigoRun;

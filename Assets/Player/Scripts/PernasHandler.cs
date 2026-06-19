@@ -14,41 +14,29 @@ public class PernasHandler : MonoBehaviour
     [SerializeField] float tempoResetaPernas = 0.5f;    // Tempo que as pernas voltam pra posição padrão quando parado
     [SerializeField] float delayPasso = 0.5f;   // Tempo que não pode dar passo apos um passo
 
-    public bool andando = true;
+    //public bool andando = true;
     public bool correndo = false;
+    public bool stealth = false;
 
     public bool pernasAtivas = true;
     public bool podeDarPasso = true;
+
+    SomPasso somPasso;
 
     private Rigidbody2D rb;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        somPasso = GetComponent<SomPasso>();
 
         // Inicia corrotina de cada perna
         for (int i = 0; i < pernasTargets.Count; i++)
         {
             StartCoroutine(HandlerPosPerna(pernasTargets[i], pernasPosPadrao[i]));
         }
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (andando)
-        {
-            Andando();
-        }
-        else if (correndo)
-        {
-            Correndo();
-        }
-    }
-
-    void Andando()
-    {
-
+        
     }
 
     float Distancia(Transform perna, Transform posPadrao)
@@ -80,6 +68,10 @@ public class PernasHandler : MonoBehaviour
             StartCoroutine(DelayPasso());
         }
         
+        if (somPasso)
+        {
+            somPasso.TocaSomPasso(perna);
+        }
         
         //Debug.Log((perna.position-posPadrao.position).normalized);
     }
@@ -146,12 +138,4 @@ public class PernasHandler : MonoBehaviour
             MexePerna(pernasTargets[i], pernasPosPadrao[i], direcaoMod);
         }
     }
-
-    
-
-    void Correndo()
-    {
-        
-    }
-
 }

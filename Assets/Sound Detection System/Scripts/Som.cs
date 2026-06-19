@@ -3,7 +3,7 @@ using UnityEngine;
 public class Som
 {
 
-    public enum TipoSom {Default = -1, Desconhecido, Perigo}
+    public enum TipoSom {Default = -1, Desconhecido, Perigo, Aliado}
 
     public Som(Vector3 _pos, float _range)
     {

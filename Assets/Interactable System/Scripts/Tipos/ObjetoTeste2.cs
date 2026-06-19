@@ -10,6 +10,11 @@ public class ObjetoTeste2 : MonoBehaviour, IInteragivel
     bool jogavel = false;    // Estado false: objeto no chão, Estado true: na mão do player
     GameObject objetoInputInst = null;
 
+    [Header("Som")]
+    [SerializeField] float rangeSom = 10f;
+    [SerializeField] int tipoSom = 0;
+    Som somColisao;
+
     Rigidbody2D rb;
 
     void Start()
@@ -55,6 +60,21 @@ public class ObjetoTeste2 : MonoBehaviour, IInteragivel
         jogavel = false;
         podeInteragir = true;
     }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        somColisao = new Som(transform.position, rangeSom);
+
+        if (tipoSom == 0)
+            somColisao.tipoSom = Som.TipoSom.Desconhecido;
+        else if (tipoSom == 1)
+            somColisao.tipoSom = Som.TipoSom.Perigo;
+
+        GameSonsManager.PropagaSom(somColisao);
+
+        Debug.Log("Objeto fez som de colisão");
+    }
+
 
     public void MostraInput()
     {

@@ -10,6 +10,7 @@ public class InimigoDead : EstadoBase<InimigoTipo1>
     public override void EntraEstado()
     {
         Debug.Log("Entrou em estado" + this);
+        Debug.Log("AI Ai Ai ai o dinossaro me modeu");
         
     }
 

@@ -11,6 +11,7 @@ public class InimigoTipo1 : MaquinaEstados<InimigoTipo1>
     public InimigoData inimigoData;
     public float velMult = 1f;
     public int comportamento = 1;   // 0 == Indefeso, 1 == Normal, 2 == Em Alerta
+    public float Vida { get; private set; }
 
     public Transform Player { get; private set; }
     public Rigidbody2D RbPlayer { get; private set; }
@@ -84,6 +85,8 @@ public class InimigoTipo1 : MaquinaEstados<InimigoTipo1>
             Player = playerObj.transform;
             RbPlayer = playerObj.GetComponent<Rigidbody2D>();
         }
+
+        Vida = inimigoData.vidaMax;
             
 
         ResetaSom();
@@ -112,5 +115,15 @@ public class InimigoTipo1 : MaquinaEstados<InimigoTipo1>
             Arma.TrocaModo(novoModo);
         }
     } 
+
+    public void RecebeDano(int dano)
+    {
+        Vida -= dano;
+        
+        if (Vida <= 0)
+        {
+            TrocaEstado(EstadoDead);
+        }
+    }
 
 }
