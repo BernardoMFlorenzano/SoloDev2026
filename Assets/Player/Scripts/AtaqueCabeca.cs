@@ -12,7 +12,7 @@ public class AtaqueCabeca : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Inimigo"))
+        if (collision.CompareTag("Inimigo") && movimentoPlayer.movAtivo)
         {
             inimigoScript = collision.GetComponent<InimigoTipo1>();
 

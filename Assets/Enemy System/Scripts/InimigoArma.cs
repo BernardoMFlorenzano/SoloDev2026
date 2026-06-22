@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -5,6 +6,8 @@ using UnityEngine;
 
 public class InimigoArma : MonoBehaviour
 {
+    public static event Action<float> OnHitPlayer;
+
     public Vector3 posPadraoRepouso;
     public Vector3 rotPadraoRepouso;
     public Vector3 posPadraoMirando;
@@ -96,6 +99,7 @@ public class InimigoArma : MonoBehaviour
             if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
                 Debug.Log("Player levou tiro");
+                OnHitPlayer?.Invoke(armaData.danoArma);
             }
         }
         else
@@ -108,7 +112,7 @@ public class InimigoArma : MonoBehaviour
     {
         float anguloOriginal = Mathf.Atan2(dirOriginal.y, dirOriginal.x);
 
-        float offset = Random.Range(-maxSpread, maxSpread) * Mathf.Deg2Rad;
+        float offset = UnityEngine.Random.Range(-maxSpread, maxSpread) * Mathf.Deg2Rad;
 
         float anguloFinal = anguloOriginal + offset;
         return new Vector2(Mathf.Cos(anguloFinal), Mathf.Sin(anguloFinal));

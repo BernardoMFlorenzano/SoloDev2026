@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
 [CreateAssetMenu(fileName = "PlayerData", menuName = "Scriptable Objects/PlayerData")]
 public class PlayerData : ScriptableObject
@@ -24,4 +25,6 @@ public class PlayerData : ScriptableObject
     public float impulsoLunge = 30f;
     public float tempoLunge = 0.75f;
     public float cooldownLunge = 2f;
+    [Header("Vida")]
+    public float maxVida = 5f;
 }

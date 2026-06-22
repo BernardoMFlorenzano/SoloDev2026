@@ -19,6 +19,8 @@ public class InimigoTipo1 : MaquinaEstados<InimigoTipo1>
 
     public float Vida { get; private set; }
 
+
+    public GameController gameController{ get; private set; }
     public Transform Player { get; private set; }
     public Rigidbody2D RbPlayer { get; private set; }
     public Rigidbody2D Rb { get; private set; }
@@ -73,6 +75,7 @@ public class InimigoTipo1 : MaquinaEstados<InimigoTipo1>
         DirVisao = GetComponent<InimigoOlhaDirecao>();
         Arma = GetComponentInChildren<InimigoArma>();
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
         
 
 

@@ -11,11 +11,18 @@ public class InputPlayerManager : MonoBehaviour
     public static event Action<bool> OnSprintInput;
     public static event Action<bool> OnCrouchInput;
 
+    [SerializeField] GameController gameController;
+
     Vector2 direcao;
 
 
     public void OnMove(InputValue value)
     {
+        if (!VerificaInput())
+        {
+            return;
+        }
+
         direcao = value.Get<Vector2>();
         direcao = direcao.normalized;
         OnMoveInput?.Invoke(direcao);
@@ -23,21 +30,41 @@ public class InputPlayerManager : MonoBehaviour
 
     public void OnInteract()
     {
+        if (!VerificaInput())
+        {
+            return;
+        }
+
         OnInteractInput?.Invoke();
     }
 
     public void OnAttack()
     {
+        if (!VerificaInput())
+        {
+            return;
+        }
+
         OnAttackInput?.Invoke();
     }
 
     public void OnLunge()
     {
+        if (!VerificaInput())
+        {
+            return;
+        }
+
         OnLungeInput?.Invoke();
     }
 
     public void OnSprint(InputValue value)
     {
+        if (!VerificaInput())
+        {
+            return;
+        }
+
         if (value.isPressed)
             OnSprintInput?.Invoke(true);
         else 
@@ -46,12 +73,30 @@ public class InputPlayerManager : MonoBehaviour
 
     public void OnCrouch(InputValue value)
     {
+        if (!VerificaInput())
+        {
+            return;
+        }
+
         if (value.isPressed)
             OnCrouchInput?.Invoke(true);
         else
             OnCrouchInput?.Invoke(false);
     }
 
+
+    bool VerificaInput()
+    {
+        if (gameController)
+        {
+            if (!gameController.inputAtivo)
+            {
+                return false;
+            }
+        }
+
+        return true;       
+    }
     
 
 }

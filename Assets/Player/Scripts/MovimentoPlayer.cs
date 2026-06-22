@@ -5,7 +5,9 @@ using UnityEngine.UIElements;
 
 public class MovimentoPlayer : MonoBehaviour
 {
+    GameController gameController;
     public PlayerData playerData;
+    public bool movAtivo = true;
     Rigidbody2D rb;
     Vector2 direcao;
     DirecaoCorpo direcaoCorpo;
@@ -63,6 +65,8 @@ public class MovimentoPlayer : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+
         animator.enabled = false;
 
         direcaoCorpo = GetComponent<DirecaoCorpo>();
@@ -89,9 +93,26 @@ public class MovimentoPlayer : MonoBehaviour
         sneaking = val;
     }
 
+    void Update()
+    {
+        if (gameController)
+        {
+            if (!gameController.inputAtivo)
+            {
+                movAtivo = false;
+                direcaoCorpo.ativo = false;
+            }
+            if (!gameController.playerVivo)
+            {
+                pernasHandler.pernasAtivas = false;
+            }
+            
+        }
+    }
+
     void FixedUpdate()
     {
-        if (emLunge)
+        if (emLunge || !movAtivo)
         {
             return;    
         }
@@ -222,6 +243,13 @@ public class MovimentoPlayer : MonoBehaviour
             return true;
         else 
             return false;
+    }
+
+    public void ReativaMov()
+    {
+        movAtivo = true;
+        direcaoCorpo.ativo = true;
+        pernasHandler.pernasAtivas = true;
     }
 
 }

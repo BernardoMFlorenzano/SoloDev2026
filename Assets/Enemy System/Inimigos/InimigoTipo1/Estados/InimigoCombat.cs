@@ -28,6 +28,14 @@ public class InimigoCombat : EstadoBase<InimigoTipo1>
             destinoAtual = (Vector2)ctx.transform.position - direcao;
 
         ctx.Agent.SetDestination(destinoAtual);  // Calcula o caminho
+
+        if (ctx.gameController)
+        {
+            if (!ctx.gameController.playerVivo)
+            {
+                ctx.SetaAtirando(false);
+            }     
+        }
     }
 
     // Ações de Fixed update
