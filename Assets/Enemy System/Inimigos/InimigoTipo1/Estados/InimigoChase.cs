@@ -26,9 +26,6 @@ public class InimigoChase : EstadoBase<InimigoTipo1>
             ctx.ResetaSom();
             
         }
-
-        
-
         
     }
 

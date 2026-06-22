@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class LinhaMembro : MonoBehaviour
 {
+    InimigoTipo1 inimigo;
     private LineRenderer lineRenderer;
     public List<Transform> pontos;
 
@@ -10,8 +11,16 @@ public class LinhaMembro : MonoBehaviour
     void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
+        inimigo = GetComponentInParent<InimigoTipo1>();
 
         lineRenderer.positionCount = pontos.Count;
+
+        if (inimigo)
+        {
+            lineRenderer.startColor = inimigo.corPadrao;
+            lineRenderer.endColor = inimigo.corPadrao;
+        }
+        
     }
 
     // Update is called once per frame

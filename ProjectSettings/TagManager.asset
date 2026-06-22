@@ -42,6 +42,9 @@ TagManager:
   - name: Chao
     uniqueID: 1161547817
     locked: 0
+  - name: ChaoEfeitos
+    uniqueID: 1386215395
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
@@ -51,14 +54,20 @@ TagManager:
   - name: Inimigos
     uniqueID: 1714827683
     locked: 0
-  - name: Player
-    uniqueID: 2886223793
-    locked: 0
   - name: Arma
     uniqueID: 3045269081
     locked: 0
+  - name: Inimigos2
+    uniqueID: 1799916037
+    locked: 0
+  - name: Player
+    uniqueID: 2886223793
+    locked: 0
   - name: Parede
     uniqueID: 717808981
+    locked: 0
+  - name: Efeitos
+    uniqueID: 2951617637
     locked: 0
   - name: UI
     uniqueID: 1587967601

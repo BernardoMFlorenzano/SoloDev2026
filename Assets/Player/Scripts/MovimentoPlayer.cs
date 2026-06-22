@@ -27,6 +27,9 @@ public class MovimentoPlayer : MonoBehaviour
     [SerializeField] float weightReduzidoPadrao = 0f;
     Animator animator;
     PernasHandler pernasHandler;
+    bool bracoEscolhido = false;    // varia entre esquerda e direita
+    Coroutine corAnimAtaque;
+
 
     public bool GetCorrendo()
     {
@@ -42,7 +45,7 @@ public class MovimentoPlayer : MonoBehaviour
     {
         InputPlayerManager.OnMoveInput += SetaDirecaoInput;
         InputPlayerManager.OnAttackInput += Ataca;
-        InputPlayerManager.OnLungeInput += Lunge;
+        //InputPlayerManager.OnLungeInput += Lunge;
         InputPlayerManager.OnSprintInput += SetaSprintInput;
         InputPlayerManager.OnCrouchInput += SetaCrouchInput;
     }
@@ -50,7 +53,7 @@ public class MovimentoPlayer : MonoBehaviour
     {
         InputPlayerManager.OnMoveInput -= SetaDirecaoInput;
         InputPlayerManager.OnAttackInput -= Ataca;
-        InputPlayerManager.OnLungeInput -= Lunge;
+        //InputPlayerManager.OnLungeInput -= Lunge;
         InputPlayerManager.OnSprintInput -= SetaSprintInput;
         InputPlayerManager.OnCrouchInput -= SetaCrouchInput;
     }
@@ -123,22 +126,49 @@ public class MovimentoPlayer : MonoBehaviour
         if (animator != null && !animacaoAtaque)
         {
             animator.enabled = true;
+            animator.SetBool("Braco", bracoEscolhido);
             animator.SetTrigger("Ataca");
             animacaoAtaque = true;
 
-            // Eventualmente alternar entre os braços
-            StartCoroutine(AnimAtaque(bracoEsqSolver));
+            if (bracoEscolhido == false)
+            {
+                corAnimAtaque = StartCoroutine(AnimAtaque(bracoEsqSolver));
+            }
+            else if (bracoEscolhido == true)
+            {
+                corAnimAtaque = StartCoroutine(AnimAtaque(bracoDirSolver));
+            }
+               
+            bracoEscolhido = !bracoEscolhido;
+        }
+    }
+
+    public void AtaqueMordida()
+    {
+        if (animator != null && !animacaoAtaque)
+        {
+            if (corAnimAtaque != null)
+            {
+                StopCoroutine(corAnimAtaque);
+            }
+            animator.enabled = true;
+            animator.SetTrigger("Mordida");
+            animacaoAtaque = true;
+
+            corAnimAtaque = StartCoroutine(AnimAtaque(bracoDirSolver));
         }
     }
 
     IEnumerator AnimAtaque(LimbSolver2D bracoSolver)
     {
-        bracoSolver.weight = weightReduzidoPadrao;
+        if (bracoSolver)
+            bracoSolver.weight = weightReduzidoPadrao;
         corpoSolver.weight = weightReduzidoPadrao;
 
         yield return new WaitUntil(() => animacaoAtaque == false);
 
-        bracoSolver.weight = weightPadrao;
+        if (bracoSolver)
+            bracoSolver.weight = weightPadrao;
         corpoSolver.weight = weightPadrao;
 
         animator.enabled = false;

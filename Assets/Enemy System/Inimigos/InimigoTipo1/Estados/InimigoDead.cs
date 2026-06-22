@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 public class InimigoDead : EstadoBase<InimigoTipo1>
@@ -11,6 +12,8 @@ public class InimigoDead : EstadoBase<InimigoTipo1>
     {
         Debug.Log("Entrou em estado" + this);
         Debug.Log("AI Ai Ai ai o dinossaro me modeu");
+
+        ctx.Morre();
         
     }
 

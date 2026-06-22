@@ -86,8 +86,18 @@ public class InimigoSurprise : EstadoBase<InimigoTipo1>
 
                 GameSonsManager.PropagaSom(somAlerta);
 
-                ctx.TrocaEstado(ctx.EstadoChase);   // Persegue player 
-                return;
+                if (ctx.comportamento != 0) // Não esta indefeso 
+                {
+                    ctx.TrocaEstado(ctx.EstadoChase);   // Persegue player 
+                    return;
+                }
+                else
+                {
+                    ctx.TrocaEstado(ctx.EstadoPanic);   // Persegue player 
+                    return;
+                }
+
+                
             }
 
             if (ctx.SomAtual != null && ctx.SomAtual != somOriginal)

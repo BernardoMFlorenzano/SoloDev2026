@@ -15,6 +15,7 @@ public class InimigoCombat : EstadoBase<InimigoTipo1>
         Debug.Log("Entrou em estado" + this);
 
         ctx.TrocaModoArma(1);   // Mira
+        ctx.SetaAtirando(true);
         
     }
 
@@ -61,5 +62,6 @@ public class InimigoCombat : EstadoBase<InimigoTipo1>
     public override void SaiDeEstado()
     {
         ctx.TrocaModoArma(0);   // para de Mirar
+        ctx.SetaAtirando(false);    // para de atirar
     }
 }
