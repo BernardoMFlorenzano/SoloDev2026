@@ -10,6 +10,7 @@ public class InputPlayerManager : MonoBehaviour
     public static event Action OnLungeInput;
     public static event Action<bool> OnSprintInput;
     public static event Action<bool> OnCrouchInput;
+    public static event Action OnPauseInput;
 
     [SerializeField] GameController gameController;
 
@@ -84,6 +85,11 @@ public class InputPlayerManager : MonoBehaviour
             OnCrouchInput?.Invoke(false);
     }
 
+    public void OnCancel()
+    {
+        OnPauseInput?.Invoke();
+    }
+
 
     bool VerificaInput()
     {
@@ -97,6 +103,8 @@ public class InputPlayerManager : MonoBehaviour
 
         return true;       
     }
+
+
     
 
 }

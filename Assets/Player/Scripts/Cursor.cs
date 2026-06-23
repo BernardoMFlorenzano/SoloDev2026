@@ -5,13 +5,13 @@ using UnityEngine.InputSystem;
 public class Cursor : MonoBehaviour
 {
     [SerializeField] float distanciaMaxCursor;  // Distancia maxima que o cursor pode ficar do outro player
-    [SerializeField] Transform player;
+    Transform player;
     Vector3 mousePos; 
     float distancia;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
     // Update is called once per frame

@@ -20,6 +20,11 @@ namespace MenuSystem
 
         private Canvas canvas;
 
+        void OnDisable()
+        {
+            
+        }
+
         private void Awake()
         {
             if (Instance == null)
@@ -32,6 +37,12 @@ namespace MenuSystem
 
             canvas = GetComponent<Canvas>();
             canvas.enabled = false;
+            Debug.Log(canvas);
+        }
+
+        void Start()
+        {
+    
         }
 
         public void TogglePause(bool activate)
@@ -58,7 +69,9 @@ namespace MenuSystem
 
         public void ReturnToMenu()
         {
-            Debug.Log("Voltou pro menu inicial!");
+            SceneManager.LoadScene(0);
+
+            TogglePause(false);
         }
 
         public void OpenPauseSection() { pauseSection.Activate(null); }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace MenuSystem
 {
@@ -11,7 +12,7 @@ namespace MenuSystem
 
         public void StartNewGame()
         {
-            Debug.Log("Começando novo jogo!");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
         public void ExitGame()

@@ -13,14 +13,6 @@ namespace CameraSystem
 
         private void Awake()
         {
-            if (Instance == null)
-            {
-                Instance = this;
-                DontDestroyOnLoad(gameObject);
-            }
-            else
-                Destroy(gameObject);
-
             cinemachineBrain = mainCamera.GetComponent<CinemachineBrain>();
             cinemachineBrain.DefaultBlend.Time = cameraData.transitionDuration;
         }
