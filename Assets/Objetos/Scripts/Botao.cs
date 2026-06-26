@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Botao : MonoBehaviour, IInteragivel
 {
+    [SerializeField] GameObject interagivelAnex;
+    IInteragivel interagivel;
     [SerializeField] int tipoObjeto = 0;
     [SerializeField] GameObject objetoInputPrefab;
     [Header("Som")]
@@ -17,6 +19,8 @@ public class Botao : MonoBehaviour, IInteragivel
     void Start()
     {
         //spriteRenderer = GetComponent<SpriteRenderer>();
+
+        interagivelAnex.TryGetComponent(out interagivel);
     }
 
     public bool PodeInteragir()
@@ -57,6 +61,8 @@ public class Botao : MonoBehaviour, IInteragivel
     void MudaEstado()
     {
         estado = !estado;
+
+        interagivel?.Interagir();
         
         TocaSom();            
 

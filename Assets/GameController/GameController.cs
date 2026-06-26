@@ -1,5 +1,7 @@
+using System.Collections;
 using MenuSystem;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -39,6 +41,8 @@ public class GameController : MonoBehaviour
     {
         inputAtivo = false;
         playerVivo = false;
+
+        StartCoroutine(ResetaCena());
     }
 
     void PausaJogo()
@@ -58,5 +62,12 @@ public class GameController : MonoBehaviour
                 inputAtivo = true;
             }
         }
+    }
+
+    IEnumerator ResetaCena()
+    {
+        yield return new WaitForSeconds(1f);
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

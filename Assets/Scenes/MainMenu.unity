@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventSystem
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 6893755917645730635}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &119446846
@@ -253,7 +253,7 @@ MonoBehaviour:
   m_Navigation:
     m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 5267348909376424118}
+    m_SelectOnUp: {fileID: 3410544976800947071}
     m_SelectOnDown: {fileID: 3405569621264653452}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
@@ -1087,6 +1087,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6a789f8588c6e34dbd91cabb46fa43d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuSystem.MainMenuController
+  firstSelectedObject: {fileID: 6893755917645730635}
   configSection: {fileID: 5607036272301225235}
   controlsSection: {fileID: 4796470912883767444}
   creditsSection: {fileID: 0}
@@ -1203,7 +1204,7 @@ MonoBehaviour:
   m_Navigation:
     m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 3410544976800947071}
+    m_SelectOnUp: {fileID: 340851228}
     m_SelectOnDown: {fileID: 5267348909376424118}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
@@ -1260,7 +1261,7 @@ MonoBehaviour:
     m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 5267348909376424118}
-    m_SelectOnDown: {fileID: 3405569621264653452}
+    m_SelectOnDown: {fileID: 340851228}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -2473,9 +2474,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5607036272301225235}
-        m_TargetAssemblyTypeName: MenuSystem.ConfigSection, Assembly-CSharp
-        m_MethodName: Deactivate
+      - m_Target: {fileID: 2108989099131626327}
+        m_TargetAssemblyTypeName: MenuSystem.MainMenuController, Assembly-CSharp
+        m_MethodName: CloseConfigSection
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2569,9 +2570,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4796470912883767444}
-        m_TargetAssemblyTypeName: MenuSystem.ControlsSection, Assembly-CSharp
-        m_MethodName: Deactivate
+      - m_Target: {fileID: 2108989099131626327}
+        m_TargetAssemblyTypeName: MenuSystem.MainMenuController, Assembly-CSharp
+        m_MethodName: CloseControlsSection
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

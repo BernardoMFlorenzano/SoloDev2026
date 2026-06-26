@@ -209,5 +209,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ObjetoTeste2
   tipoObjeto: 2
   objetoInputPrefab: {fileID: 8333296955410669447, guid: a3492e95bab322c40a516909ea509200, type: 3}
-  rangeSom: 10
+  rangeSom: 20
   tipoSom: 0

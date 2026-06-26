@@ -27,13 +27,6 @@ namespace MenuSystem
 
         private void Awake()
         {
-            if (Instance == null)
-            {
-                Instance = this;
-                DontDestroyOnLoad(gameObject);
-            }
-            else
-                Destroy(gameObject);
 
             canvas = GetComponent<Canvas>();
             canvas.enabled = false;

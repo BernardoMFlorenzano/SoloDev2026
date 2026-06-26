@@ -55,6 +55,11 @@ public class Porta : MonoBehaviour, IInteragivel
         return tipoObjeto;
     }
 
+    public bool GetEstado()
+    {
+        return aberto;
+    }
+
     void MudaEstado()
     {
         aberto = !aberto;

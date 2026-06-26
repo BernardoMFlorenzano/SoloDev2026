@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.Intrinsics;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -26,6 +27,8 @@ public class InimigoArma : MonoBehaviour
     bool atirando = false;
 
     bool delayTiro = false;
+
+    Som somTiro;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -85,7 +88,7 @@ public class InimigoArma : MonoBehaviour
 
     void Atira()
     {
-        var hit = Physics2D.Raycast(pontaArma.position, SpreadArma(transform.up, armaData.spreadMaxTiro), 20f, targetLayerMask);
+        var hit = Physics2D.Raycast(pontaArma.position, SpreadArma(transform.up, armaData.spreadMaxTiro), armaData.rangeArma, targetLayerMask);
 
         var trail = Instantiate(bulletTrail, pontaArma.position, transform.rotation);
 
@@ -106,6 +109,14 @@ public class InimigoArma : MonoBehaviour
         {
             trailScript.SetaTarget(pontaArma.position + transform.up * armaData.rangeArma);
         }
+
+
+        somTiro = new Som(pontaArma.position, armaData.somTiroRange)
+        {
+            tipoSom = Som.TipoSom.Perigo
+        };
+
+        GameSonsManager.PropagaSom(somTiro);
     }
 
     Vector2 SpreadArma(Vector2 dirOriginal, float maxSpread)

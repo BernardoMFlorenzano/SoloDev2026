@@ -29,6 +29,7 @@ public class MovimentoPlayer : MonoBehaviour
     [SerializeField] float weightReduzidoPadrao = 0f;
     Animator animator;
     PernasHandler pernasHandler;
+    BracosHandler bracosHandler;
     bool bracoEscolhido = false;    // varia entre esquerda e direita
     Coroutine corAnimAtaque;
 
@@ -71,6 +72,7 @@ public class MovimentoPlayer : MonoBehaviour
 
         direcaoCorpo = GetComponent<DirecaoCorpo>();
         pernasHandler = GetComponent<PernasHandler>();
+        bracosHandler = GetComponent<BracosHandler>();
     }
 
     public void SetaDirecaoInput(Vector2 dir)
@@ -144,6 +146,15 @@ public class MovimentoPlayer : MonoBehaviour
 
     void Ataca()
     {
+        if (bracosHandler != null)
+        {
+            if (bracosHandler.segurando)
+            {
+                bracosHandler.EscolheBracoInteracao(-1, null);
+                return;
+            }
+        }
+
         if (animator != null && !animacaoAtaque)
         {
             animator.enabled = true;

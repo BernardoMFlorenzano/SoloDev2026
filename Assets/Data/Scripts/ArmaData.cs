@@ -7,6 +7,8 @@ public class ArmaData : ScriptableObject
     public float delayTiro = 0.25f;
     public float rangeArma = 20f;
     public float spreadMaxTiro = 10f;
+
+    public float somTiroRange = 20f;
     
 
 }
