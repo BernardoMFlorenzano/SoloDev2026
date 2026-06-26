@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerInteracao : MonoBehaviour
 {
@@ -21,6 +20,7 @@ public class PlayerInteracao : MonoBehaviour
         InputPlayerManager.OnInteractInput -= Interage;
     }
 
+    // No FixedUpdate, vai ser procurado o objeto interagível mais próximo
     void FixedUpdate()
     {
         if (interagiveisEmRange.Count > 0)
@@ -66,10 +66,9 @@ public class PlayerInteracao : MonoBehaviour
             OnInteracao?.Invoke(interagivelAtual.GetTipo(), interagivelAtual.transform);
         }
 
-        else
+        else    // Se não há interagiveis válidos, gera evento com valores invalidos (Objetos listeners saberão que houve input)
         {
             OnInteracao?.Invoke(-1, null);
-            Debug.Log("Nenhum interagivel valido em range");
         }
     }
 
@@ -83,7 +82,7 @@ public class PlayerInteracao : MonoBehaviour
         }
     }
 
-    // Interagiveis que entram na área são removidos da lista
+    // Interagiveis que saem na área são removidos da lista
     void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out IInteragivel interagivel))
