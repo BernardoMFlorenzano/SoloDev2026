@@ -2,8 +2,9 @@ using UnityEngine;
 
 public abstract class EstadoBase<T> where T : MaquinaEstados
 {
-    protected T ctx;    // Variavel que guarda a maquina de estados especifica
+    protected T ctx;    // Variavel que guarda a máquina de estados específica
 
+    // Inicialização da referência à máquina de estados (será usado nos estados derivados)
     public EstadoBase(T contextoAtual)
     {
         ctx = contextoAtual;

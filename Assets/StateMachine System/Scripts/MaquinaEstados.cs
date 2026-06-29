@@ -1,10 +1,12 @@
 using UnityEngine;
 
+// Definição genêrica de MaquinaEstados
 public abstract class MaquinaEstados : MonoBehaviour
 {
 
 }
 
+// Definição para possibilitar a criação de classes filhas de forma segura
 public abstract class MaquinaEstados<T> : MaquinaEstados where T : MaquinaEstados
 {
     protected EstadoBase<T> estadoAtual; // Variavel que guarda o estado atual
@@ -36,8 +38,6 @@ public abstract class MaquinaEstados<T> : MaquinaEstados where T : MaquinaEstado
         {
             estadoAtual.SaiDeEstado();
         }
-
-        //Debug.Log($"[FSM] Trocando de {estadoAtual} para {novoEstado}");
 
         estadoAtual = novoEstado;
         estadoAtual.EntraEstado();

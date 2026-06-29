@@ -5,12 +5,12 @@
 ## Estrutura do pacote:
 O Sistema de Interação se baseia em dois scripts: 
 * **IInteragivel**: Definição da Interface para os objetos interagíveis;
-* **PlayerInteracao**: Definição do código de interação do player, usando de um trigger collider para identificar Interfaces IInteragivel proximas.
+* **PlayerInteracao**: Definição do código de interação do player, usando de um trigger collider para identificar Interfaces IInteragivel próximas.
 
 ## Como usar:
-Na pasta "Exemplos" há um exemplo de objeto interagivel, sendo que para criar um objeto interagivel e faze-lo ser interagível pelo player deve-se seguir esses passos:
+Na pasta "Exemplos" há um exemplo de objeto interagível, sendo que para criar um novo objeto e fazê-lo ser interagível pelo player deve se seguir esses passos:
 
-1. Criar um novo script monobehaviour com base na interface IInteragivel:
+1. Criar um novo script MonoBehaviour com base na interface IInteragivel:
 
 `public class NomeDoInteragivel : MonoBehaviour, IInteragivel`
 
@@ -24,3 +24,5 @@ Na pasta "Exemplos" há um exemplo de objeto interagivel, sendo que para criar u
 
 6. Visual do input que aparece ao estar perto suficiente do objeto interagível pode ser customizado, bastando apenas replicar o prefab "InputSprite" com um visual e comportamentos customizados (como uma animação, por exemplo).
 
+
+Obs.: Na cena CenaExemplo, foram usados scripts teste para demonstrar o funcionamento do sistema.
