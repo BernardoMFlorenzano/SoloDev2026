@@ -1,9 +1,9 @@
 {
   "dependencies": {
     "com.h8man.2d.navmeshplus": {
-      "version": "file:D:/Downloads 2/NavMeshPlus-master",
+      "version": "file:com.h8man.2d.navmeshplus",
       "depth": 0,
-      "source": "local",
+      "source": "embedded",
       "dependencies": {}
     },
     "com.unity.2d.animation": {
